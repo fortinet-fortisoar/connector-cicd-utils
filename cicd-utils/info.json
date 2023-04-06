@@ -1,0 +1,39 @@
+{
+  "name": "cicd-utils",
+  "version": "1.0.0",
+  "label": "CICD Utils",
+  "description": "CICD provides the out of box actions for CICD solution pack ",
+  "publisher": "Fortinet",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "icon_small_name": "default_small.png",
+  "icon_large_name": "default_large.png",
+  "category": "Utilities",
+  "help_online": "",
+  "configuration": {},
+  "operations": [
+    {
+      "title": "Unzip Export Template",
+      "operation": "unzip_export_template",
+      "annotation": "unzip_export_template",
+      "category": "utilities",
+      "description": "Unzip the specified downloaded zip export template",
+      "output_schema": {
+      },
+      "parameters": [
+        {
+          "title": "Filepath",
+          "type": "text",
+          "name": "filepath",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "Eg. 5af00c658289bb5618193f42",
+          "description": "Specify the file path on the filesystem",
+          "tooltip": "filepath under /tmp directory"
+        }
+      ],
+      "enabled": true
+    }
+  ]
+}
