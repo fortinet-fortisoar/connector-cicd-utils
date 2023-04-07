@@ -4,7 +4,7 @@
   "label": "CICD Utils",
   "description": "CICD provides the out of box actions for CICD solution pack ",
   "publisher": "Fortinet",
-  "cs_approved": false,
+  "cs_approved": true,
   "cs_compatible": true,
   "icon_small_name": "default_small.png",
   "icon_large_name": "default_large.png",
@@ -31,6 +31,101 @@
           "placeholder": "Eg. 5af00c658289bb5618193f42",
           "description": "Specify the file path on the filesystem",
           "tooltip": "filepath under /tmp directory"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "title": "Split Export Template",
+      "operation": "split_export_templates",
+      "annotation": "split_export_templates",
+      "category": "utilities",
+      "description": "Split the export template recordset into Production Content, Production Settings and Development Settings export template recordset",
+      "output_schema": {
+      },
+      "parameters": [
+        {
+          "title": "Prod Content Filepath",
+          "type": "text",
+          "name": "prod_content_filepath",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "/tmp/current_date/Source Control - Production Content/records/export_templates/Source Control - Production Content.json",
+          "description": "Specify the filename of production content export template, which you want to create in export_templates recordset",
+          "tooltip": "filepath under /tmp directory e.g. \"/tmp/current_date/Source Control - Production Content/records/export_templates/Source Control - Production Content.json\""
+        },
+        {
+          "title": "Prod Content JSON",
+          "type": "text",
+          "name": "prod_content_json",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "Specify the json of production content export template, which you want to add in export_templates recordset",
+          "tooltip": "Specify the json of production content export template, which you want to add in export_templates recordset"
+        },
+        {
+          "title": "Prod Settings Filepath",
+          "type": "text",
+          "name": "prod_settings_filepath",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "/tmp/current_date/Source Control - Production Content/records/export_templates/Source Control - Production Settings.json",
+          "description": "Specify the filename of production settings export template, which you want to create in export_templates recordset",
+          "tooltip": "filepath under /tmp directory e.g. \"/tmp/current_date/Source Control - Production Content/records/export_templates/Source Control - Production Settings.json\""
+        },
+        {
+          "title": "Prod Settings JSON",
+          "type": "text",
+          "name": "prod_settings_json",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "Specify the json of production settings export template, which you want to add in export_templates recordset",
+          "tooltip": "Specify the json of production settings export template, which you want to add in export_templates recordset"
+        },
+        {
+          "title": "Dev Settings Filepath",
+          "type": "text",
+          "name": "dev_settings_filepath",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "placeholder": "/tmp/current_date/Source Control - Production Content/records/export_templates/Source Control - Development Settings.json",
+          "description": "Specify the filename of development settings export template, which you want to create in export_templates recordset",
+          "tooltip": "filepath under /tmp directory e.g. \"/tmp/current_date/Source Control - Production Content/records/export_templates/Source Control - Development Settings.json\""
+        },
+        {
+          "title": "Dev Settings JSON",
+          "type": "text",
+          "name": "dev_settings_json",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "Specify the json of development settings export template, which you want to add in export_templates recordset",
+          "tooltip": "Specify the json of development settings export template, which you want to add in export_templates recordset"
+        },
+        {
+          "title": "Unzip Export Template Filepath",
+          "type": "text",
+          "name": "unzip_filepath",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "Specify the unzip export template filepath under /tmp directory",
+          "tooltip": "Specify the unzip export template filepath under /tmp directory"
+        },
+        {
+          "title": "Split Zip Export Template filename",
+          "type": "text",
+          "name": "zip_filename",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "Specify the split zip export template filename",
+          "tooltip": "Specify the split zip export template filename"
         }
       ],
       "enabled": true
