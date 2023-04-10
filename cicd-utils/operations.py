@@ -30,7 +30,7 @@ def unzip_export_template(config, params, *args, **kwargs):
     for files in glob.iglob(search_target_filepath, recursive=True):
         listOfFiles.append(files)
     save_file_in_env(env, target_filepath)
-    return {"filenames": listOfFiles}
+    return {'filenames': listOfFiles}
 
 
 def split_export_templates(config, params, *args, **kwargs):
@@ -62,7 +62,8 @@ def split_export_templates(config, params, *args, **kwargs):
     shutil.make_archive(zip_filename, 'zip', unzip_filepath)
 
     save_file_in_env(env, zip_filename)
-    return {"exportFileName": zip_filename}
+    save_file_in_env(env, zip_filename + '.zip')
+    return {'exportFileName': zip_filename + '.zip'}
 
 
 operations = {
