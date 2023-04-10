@@ -17,7 +17,7 @@
       "operation": "unzip_export_template",
       "annotation": "unzip_export_template",
       "category": "utilities",
-      "description": "Unzip the specified downloaded export template zip file",
+      "description": "Unzip the specified export template zip file",
       "output_schema": {
         "filenames": []
       },
@@ -31,7 +31,7 @@
           "editable": true,
           "placeholder": "Eg. 5af00c658289bb5618193f42",
           "description": "Specify the export template zip file path on the filesystem",
-          "tooltip": "Filepath under /tmp directory"
+          "tooltip": "Export template zip file path under /tmp directory"
         }
       ],
       "enabled": true
@@ -41,7 +41,7 @@
       "operation": "split_export_templates",
       "annotation": "split_export_templates",
       "category": "utilities",
-      "description": "Split the export template file into Production Content, Production Settings and Development Settings export template files",
+      "description": "Split the export template file into three export templates named Production Content, Production Settings and Development Settings",
       "output_schema": {
         "exportFileName": ""
       },
