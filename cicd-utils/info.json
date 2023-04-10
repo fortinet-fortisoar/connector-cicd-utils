@@ -30,7 +30,7 @@
           "visible": true,
           "editable": true,
           "placeholder": "Eg. 5af00c658289bb5618193f42",
-          "description": "Specify the export template zip file path on the filesystem",
+          "description": "Specify the export template zip file path on the FortiSOAR filesystem",
           "tooltip": "Export template zip file path under /tmp directory"
         }
       ],
@@ -53,9 +53,9 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "placeholder": "/tmp/current_date/Source Control - Production Content/records/export_templates/Source Control - Production Content.json",
-          "description": "Specify the filepath of production content's export template, which you want to create in export template recordset",
-          "tooltip": "Filepath under /tmp directory e.g. \"/tmp/current_date/Source Control - Production Content/records/export_templates/Source Control - Production Content.json\""
+          "placeholder": "/tmp/2023-04-10-10-18-10-073530/Source Control - Production Content/records/export_templates/Source Control - Production Content.json",
+          "description": "Specify the filepath of production content's export template to create in export template record set",
+          "tooltip": "Filepath under /tmp directory e.g. \"/tmp/2023-04-10-10-18-10-073530/Source Control - Production Content/records/export_templates/Source Control - Production Content.json\""
         },
         {
           "title": "Prod Content JSON",
@@ -64,8 +64,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "description": "Specify the json of production content's export template, which you want to add in export template recordset",
-          "tooltip": "Specify the json of production content's export template, which you want to add in export  template recordset"
+          "description": "Specify the json of production content's export template to add in export template record set",
+          "tooltip": "Specify the json of production content's export template to add in export template record set"
         },
         {
           "title": "Prod Settings Filepath",
@@ -74,9 +74,9 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "placeholder": "/tmp/current_date/Source Control - Production Content/records/export_templates/Source Control - Production Settings.json",
-          "description": "Specify the filepath of production setting's export template, which you want to create in export template recordset",
-          "tooltip": "Filepath under /tmp directory e.g. \"/tmp/current_date/Source Control - Production Content/records/export_templates/Source Control - Production Settings.json\""
+          "placeholder": "/tmp/2023-04-10-10-18-10-073530/Source Control - Production Content/records/export_templates/Source Control - Production Settings.json",
+          "description": "Specify the filepath of production setting's export template to create in export template record set",
+          "tooltip": "Filepath under /tmp directory e.g. \"/tmp/2023-04-10-10-18-10-073530/Source Control - Production Content/records/export_templates/Source Control - Production Settings.json\""
         },
         {
           "title": "Prod Settings JSON",
@@ -85,8 +85,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "description": "Specify the json of production setting's export template, which you want to add in export template recordset",
-          "tooltip": "Specify the json of production setting's export template, which you want to add in export template recordset"
+          "description": "Specify the json code of production setting's export template to add in export template record set",
+          "tooltip": "Specify the json code of production setting's export template to add in export template record set"
         },
         {
           "title": "Dev Settings Filepath",
@@ -95,9 +95,9 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "placeholder": "/tmp/current_date/Source Control - Production Content/records/export_templates/Source Control - Development Settings.json",
-          "description": "Specify the filepath of development setting's export template, which you want to create in export template recordset",
-          "tooltip": "Filepath under /tmp directory e.g. \"/tmp/current_date/Source Control - Production Content/records/export_templates/Source Control - Development Settings.json\""
+          "placeholder": "/tmp/2023-04-10-10-18-10-073530/Source Control - Production Content/records/export_templates/Source Control - Development Settings.json",
+          "description": "Specify the filepath of development setting's export template to create in export template record set",
+          "tooltip": "Filepath under /tmp directory e.g. \"/tmp/2023-04-10-10-18-10-073530/Source Control - Production Content/records/export_templates/Source Control - Development Settings.json\""
         },
         {
           "title": "Dev Settings JSON",
@@ -106,8 +106,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "description": "Specify the json of development setting's export template, which you want to add in export template recordset",
-          "tooltip": "Specify the json of development setting's export template, which you want to add in export template recordset"
+          "description": "Specify the json code of development setting's export template to add in export template record set",
+          "tooltip": "Specify the json code of development setting's export template to add in export template record set"
         },
         {
           "title": "Unzip Export Template Filepath",
@@ -116,8 +116,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "description": "Specify the unzip export template filepath under /tmp directory",
-          "tooltip": "Specify the unzip export template filepath under /tmp directory"
+          "description": "Specify the export template filepath under /tmp directory to extract the zip file",
+          "tooltip": "Specify the export template filepath under /tmp directory to extract the zip file"
         },
         {
           "title": "Split Zip Export Template Filename",
