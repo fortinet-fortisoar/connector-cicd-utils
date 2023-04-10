@@ -30,7 +30,7 @@
           "visible": true,
           "editable": true,
           "placeholder": "Eg. 5af00c658289bb5618193f42",
-          "description": "Specify the export template zip file path on the FortiSOAR filesystem",
+          "description": "Specify the export template zip file path on the filesystem",
           "tooltip": "Export template zip file path under /tmp directory"
         }
       ],
