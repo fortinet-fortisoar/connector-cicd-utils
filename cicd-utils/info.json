@@ -9,7 +9,7 @@
   "icon_small_name": "default_small.png",
   "icon_large_name": "default_large.png",
   "category": "Utilities",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/cicd-utils/556/cicd-utils-v1-0-0",
   "configuration": {},
   "operations": [
     {
