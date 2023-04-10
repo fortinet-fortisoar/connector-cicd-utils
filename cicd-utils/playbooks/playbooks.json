@@ -2,45 +2,45 @@
   "type": "workflow_collections",
   "data": [
     {
-      "uuid": "f902edbe-18c8-40f0-a231-27fed7bdf160",
+      "uuid": "1d55aff3-d229-451a-b36c-13ecf76ccfbc",
       "@type": "WorkflowCollection",
-      "name": "Sample - Time Series Chart Utilities - 1.0.0",
-      "description": "When using the Time Series Chart Solution Pack, this connector is used by the included playbooks to facilitate the creation of data-over-time or time series charts. The included functions include building a list of datetime-buckets, as well as various utilities to process the output of dataset queries for use by the Time Series Widget. ",
+      "name": "Sample - CICD Utils - 1.0.0",
+      "description": "CICD Utils provides out of the box actions for CICD solution pack",
       "visible": true,
       "image": null,
       "recordTags": [
-        "Time",
-        "time-series-chart-utilities"
+        "Cicd",
+        "cicd-utils"
       ],
       "workflows": [
         {
           "@type": "Workflow",
-          "uuid": "552990bb-c0cf-40fd-a3db-0f2410bb5d28",
-          "collection": "/api/3/workflow_collections/f902edbe-18c8-40f0-a231-27fed7bdf160",
+          "uuid": "f885a78a-63fc-40ae-b748-c550e2454d60",
+          "collection": "/api/3/workflow_collections/1d55aff3-d229-451a-b36c-13ecf76ccfbc",
           "triggerLimit": null,
-          "description": "Takes relative date (last x days, for example), time period (hourly, daily, etc), date format string, plus optionally a list of existing datetimes and builds a list of time buckets from them spanning the time window specified by the relative date information.",
-          "name": "Assemble Query Time Windows",
-          "tag": "#Time Series Chart Utilities",
+          "description": "Unzip the specified downloaded export template zip file",
+          "name": "Unzip Export Template",
+          "tag": "#CICD Utils",
           "recordTags": [
-            "Time",
-            "time-series-chart-utilities"
+            "Cicd",
+            "cicd-utils"
           ],
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/e19fb8e1-9dd8-4ccb-842a-4a0e85d28277",
+          "triggerStep": "/api/3/workflow_steps/404c8603-e55a-40f9-9cfe-e976628a58c9",
           "steps": [
             {
-              "uuid": "e19fb8e1-9dd8-4ccb-842a-4a0e85d28277",
+              "uuid": "404c8603-e55a-40f9-9cfe-e976628a58c9",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "ae537681-57a5-49cc-93c1-e932ea6327ad",
-                "title": "Time Series Chart Utilities: Assemble Query Time Windows",
+                "route": "c29ccc1b-f9a6-4965-b415-4526dc4c88e1",
+                "title": "CICD Utils: Unzip Export Template",
                 "resources": [
                   "alerts"
                 ],
@@ -59,25 +59,19 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
             },
             {
-              "uuid": "c152dd0b-1d59-4698-8fc7-b0cf1eded363",
+              "uuid": "8c66f5a5-5bcc-40df-a19d-3288ec605ea6",
               "@type": "WorkflowStep",
-              "name": "Assemble Query Time Windows",
+              "name": "Unzip Export Template",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Time Series Chart Utilities",
+                "name": "CICD Utils",
                 "config": "''",
-                "params": {
-                  "relativeDate": "{{vars.input.params['chart_record']['chartConfig']['relativeDate']}}",
-                  "time_period": "{{vars.input.params['chart_record']['chartConfig']['timePeriod']}}",
-                  "dateFormatString": "YYYY-MM-DDTHH:mm:ss.SSS[Z]",
-                  "existing_times": "{{vars.input.params['chart_record']['queryResults']['data']['columns'][0] or []}}",
-                  "query_modified": "{{vars.input.params['chart_record']['queryModified']}}"
-                },
+                "params": [],
                 "version": "1.0.0",
-                "connector": "time-series-chart-utilities",
-                "operation": "assemble_query_time_windows",
-                "operationTitle": "Assemble Query Time Windows",
+                "connector": "cicd-utils",
+                "operation": "unzip_export_template",
+                "operationTitle": "Unzip Export Template",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -90,43 +84,43 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "62c6b220-3877-46de-bb22-eb049addcd64",
+              "uuid": "ad9dd98c-f9c3-493d-9f5c-ae8781e6e6b8",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Assemble Query Time Windows",
-              "sourceStep": "/api/3/workflow_steps/e19fb8e1-9dd8-4ccb-842a-4a0e85d28277",
-              "targetStep": "/api/3/workflow_steps/c152dd0b-1d59-4698-8fc7-b0cf1eded363"
+              "name": "Start-> Unzip Export Template",
+              "sourceStep": "/api/3/workflow_steps/404c8603-e55a-40f9-9cfe-e976628a58c9",
+              "targetStep": "/api/3/workflow_steps/8c66f5a5-5bcc-40df-a19d-3288ec605ea6"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "afecf6f4-86c8-40be-bed5-5bed8d088bc1",
-          "collection": "/api/3/workflow_collections/f902edbe-18c8-40f0-a231-27fed7bdf160",
+          "uuid": "d5c8794a-4d43-4db7-8d98-68c27fbc340d",
+          "collection": "/api/3/workflow_collections/1d55aff3-d229-451a-b36c-13ecf76ccfbc",
           "triggerLimit": null,
-          "description": "Takes Data Set and Data Set Group information and outputs the flattened list of data sets to query, a list of Data Sets which should be grouped together, and a dictionary of Data Sets with specified plot types. This data set information will come from configuring the Time Series Charts widget.",
-          "name": "Flatten Data Sets and Groups",
-          "tag": "#Time Series Chart Utilities",
+          "description": "Split the export template file into Production Content, Production Settings and Development Settings export template files",
+          "name": "Split Export Template",
+          "tag": "#CICD Utils",
           "recordTags": [
-            "Time",
-            "time-series-chart-utilities"
+            "Cicd",
+            "cicd-utils"
           ],
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/cfc2f49b-4282-4dcc-a6c8-851903826160",
+          "triggerStep": "/api/3/workflow_steps/86b182be-8aa1-44eb-afd0-668594cdc196",
           "steps": [
             {
-              "uuid": "cfc2f49b-4282-4dcc-a6c8-851903826160",
+              "uuid": "86b182be-8aa1-44eb-afd0-668594cdc196",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "e17c9d2c-3d4b-44ac-b9fe-b30dce0c7a00",
-                "title": "Time Series Chart Utilities: Flatten Data Sets and Groups",
+                "route": "de1a27ba-ae30-4887-a507-35f25b11c283",
+                "title": "CICD Utils: Split Export Template",
                 "resources": [
                   "alerts"
                 ],
@@ -145,21 +139,19 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
             },
             {
-              "uuid": "350eb7a6-3ebe-41c6-978e-01b137f0e7ff",
+              "uuid": "fa27a67a-7146-4934-b96f-85a2acb86ea2",
               "@type": "WorkflowStep",
-              "name": "Flatten Data Sets and Groups",
+              "name": "Split Export Template",
               "description": null,
               "status": null,
               "arguments": {
-                "name": "Time Series Chart Utilities",
+                "name": "CICD Utils",
                 "config": "''",
-                "params": {
-                  "dataSets": "{{vars.input.params.chart_record.chartConfig.dataSets}}"
-                },
+                "params": [],
                 "version": "1.0.0",
-                "connector": "time-series-chart-utilities",
-                "operation": "flatten_data_sets_and_groups",
-                "operationTitle": "Flatten Data Sets and Groups",
+                "connector": "cicd-utils",
+                "operation": "split_export_templates",
+                "operationTitle": "Split Export Template",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -172,182 +164,12 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "a0269d61-0abd-4474-bd3b-c282415d6ab3",
+              "uuid": "09d1c2bc-bdb3-4080-9d60-53e9d7695303",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Flatten Data Sets and Groups",
-              "sourceStep": "/api/3/workflow_steps/cfc2f49b-4282-4dcc-a6c8-851903826160",
-              "targetStep": "/api/3/workflow_steps/350eb7a6-3ebe-41c6-978e-01b137f0e7ff"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "53304530-7418-4910-923c-4615f214a9aa",
-          "collection": "/api/3/workflow_collections/f902edbe-18c8-40f0-a231-27fed7bdf160",
-          "triggerLimit": null,
-          "description": "Takes the query output for a Data Set which the user specified to be grouped on a field value and formats this output to be consistent with how the widget will render the chart.",
-          "name": "Format Data Set Output with Field-Grouped",
-          "tag": "#Time Series Chart Utilities",
-          "recordTags": [
-            "Time",
-            "time-series-chart-utilities"
-          ],
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/c76fe340-ac9d-498a-8a1b-666e1903aa99",
-          "steps": [
-            {
-              "uuid": "c76fe340-ac9d-498a-8a1b-666e1903aa99",
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "route": "21db6c4c-5d80-4934-8dcc-62c1af0f8cd1",
-                "title": "Time Series Chart Utilities: Format Data Set Output with Field-Grouped",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "records": "{{vars.input.records[0]}}"
-                  }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
-              },
-              "left": "20",
-              "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
-            },
-            {
-              "uuid": "3bab3da3-e453-4312-9198-584f9cf09299",
-              "@type": "WorkflowStep",
-              "name": "Format Data Set Output with Field-Grouped",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "name": "Time Series Chart Utilities",
-                "config": "''",
-                "params": {
-                  "queryOutput": "{{vars.steps.Query_for_each_time_bucket}}",
-                  "timeBucketsQueried": "{{vars.input.params.time_buckets}}",
-                  "dataSetConfiguration": "{{vars.input.params.dataSet}}"
-                },
-                "version": "1.0.0",
-                "connector": "time-series-chart-utilities",
-                "operation": "format_data_set_output_with_fieldgrouped",
-                "operationTitle": "Format Data Set Output with Field-Grouped",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
-              },
-              "left": "188",
-              "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "61871140-db68-4b01-ad7d-25989c7761a7",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Format Data Set Output with Field-Grouped",
-              "sourceStep": "/api/3/workflow_steps/c76fe340-ac9d-498a-8a1b-666e1903aa99",
-              "targetStep": "/api/3/workflow_steps/3bab3da3-e453-4312-9198-584f9cf09299"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "6bf9f690-8cd0-4639-8a31-529819a2c78f",
-          "collection": "/api/3/workflow_collections/f902edbe-18c8-40f0-a231-27fed7bdf160",
-          "triggerLimit": null,
-          "description": "Takes the processed output of all data set queries, plus existing chart data and the results of the \"Assemble Query Time Windows\" operation and puts together the final data columns to be rendered in the chart.",
-          "name": "Combine Query Results into Data Columns",
-          "tag": "#Time Series Chart Utilities",
-          "recordTags": [
-            "Time",
-            "time-series-chart-utilities"
-          ],
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/aedde24b-5ee1-4825-adcf-70b59b709452",
-          "steps": [
-            {
-              "uuid": "aedde24b-5ee1-4825-adcf-70b59b709452",
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "route": "9c8a66de-7dd4-495d-aab3-166ce3ec3360",
-                "title": "Time Series Chart Utilities: Combine Query Results into Data Columns",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "records": "{{vars.input.records[0]}}"
-                  }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
-              },
-              "left": "20",
-              "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
-            },
-            {
-              "uuid": "f2fcf4f5-79ab-4166-bd59-59d6aaa06314",
-              "@type": "WorkflowStep",
-              "name": "Combine Query Results into Data Columns",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "name": "Time Series Chart Utilities",
-                "config": "''",
-                "params": {
-                  "playbookMode": "{{vars.steps.Assemble_Time_Windows_to_Query.data.mode}}",
-                  "firstIndexToKeep": "{{vars.steps.Assemble_Time_Windows_to_Query.data.first_index_to_keep}}",
-                  "queriedTimeBuckets": "{{vars.steps.Assemble_Time_Windows_to_Query.data.query_buckets}}",
-                  "queryResults": "{{vars.steps.Run_Queries}}",
-                  "existingDataColumns": "{{vars.input.params.chart_record.queryResults.data.columns or []}}"
-                },
-                "version": "1.0.0",
-                "connector": "time-series-chart-utilities",
-                "operation": "combine_query_results_into_data_columns",
-                "operationTitle": "Combine Query Results into Data Columns",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
-              },
-              "left": "188",
-              "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "07af9212-d481-454a-a9a8-894179e4ab98",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Combine Query Results into Data Columns",
-              "sourceStep": "/api/3/workflow_steps/aedde24b-5ee1-4825-adcf-70b59b709452",
-              "targetStep": "/api/3/workflow_steps/f2fcf4f5-79ab-4166-bd59-59d6aaa06314"
+              "name": "Start-> Split Export Template",
+              "sourceStep": "/api/3/workflow_steps/86b182be-8aa1-44eb-afd0-668594cdc196",
+              "targetStep": "/api/3/workflow_steps/fa27a67a-7146-4934-b96f-85a2acb86ea2"
             }
           ]
         }
