@@ -1,6 +1,6 @@
 {
   "name": "cicd-utils",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "label": "CICD Utils",
   "description": "CICD Utils provides out of the box actions for CICD solution pack",
   "publisher": "Fortinet",
@@ -9,7 +9,7 @@
   "icon_small_name": "default_small.png",
   "icon_large_name": "default_large.png",
   "category": "Utilities",
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/cicd-utils/556/cicd-utils-v1-0-0",
+  "help_online": "",
   "configuration": {},
   "operations": [
     {
@@ -128,6 +128,71 @@
           "editable": true,
           "description": "Specify the split export template zip filename",
           "tooltip": "Specify the split export template zip filename"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "title": "Export FortiSOAR Template",
+      "operation": "export_fortisoar_template",
+      "annotation": "export_fortisoar_template",
+      "category": "utilities",
+      "description": "Export updated FortiSOAR Template's zip file.",
+      "output_schema": {
+        "file_iri": ""
+    },
+      "parameters": [
+        {
+          "title": "Export Template Name",
+          "type": "text",
+          "name": "export_template_name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "Specify the export template name to retrieve export templates.",
+          "tooltip": "Specify the export template name to retrieve export templates."
+        },
+        {
+          "title": "Export File Name",
+          "type": "text",
+          "name": "export_file_name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "Specify the export file name to retrieve export templates.",
+          "tooltip": "Specify the export file name to retrieve export templates."
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "title": "Import FortiSOAR Template",
+      "operation": "import_fortisoar_template",
+      "annotation": "import_fortisoar_template",
+      "category": "utilities",
+      "description": "Imports FortiSOAR Template zip file from FortiSOAR",
+      "output_schema": {},
+      "parameters": [
+        {
+          "title": "File Name",
+          "type": "text",
+          "name": "filename",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "Specify the name of file on the filesystem.",
+          "tooltip": ""
+        },
+        {
+          "title": "File Path",
+          "type": "text",
+          "name": "file_path",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "description": "Specify the path of the FortiSOAR Template file to be imported. e.g. /tmp/github-fortisoar-prod-content-2024-01-10-12-16-24-315685.zip",
+          "tooltip": "Specify the path of the FortiSOAR Template file to be imported.",
+          "placeholder": "e.g. /tmp/github-fortisoar-prod-content-2024-01-10-12-16-24-315685.zip"
         }
       ],
       "enabled": true
