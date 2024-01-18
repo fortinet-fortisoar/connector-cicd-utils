@@ -2,64 +2,39 @@
   "type": "workflow_collections",
   "data": [
     {
-      "uuid": "4f4fbda0-5154-4a6f-a344-b4eae4f0db26",
+      "uuid": "a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
       "@type": "WorkflowCollection",
-      "name": "Sample - CICD Utils - 1.0.0",
+      "name": "Sample - CICD Utils - 1.1.0",
       "description": "CICD Utils provides out of the box actions for CICD solution pack",
       "visible": true,
-      "image": null,
       "recordTags": [
-        "Cicd",
         "cicd-utils"
       ],
       "workflows": [
         {
           "@type": "Workflow",
-          "uuid": "edbacb4b-28a6-496d-84cd-06cd6740db34",
-          "collection": "/api/3/workflow_collections/4f4fbda0-5154-4a6f-a344-b4eae4f0db26",
-          "triggerLimit": null,
-          "description": "Unzip the specified export template zip file",
-          "name": "Unzip Export Template",
-          "tag": "#CICD Utils",
-          "recordTags": [
-            "Cicd",
-            "cicd-utils"
-          ],
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/f95eb25c-9a95-40dc-a7ff-fec640be18f7",
+          "uuid": "fa078ac4-d712-4a5c-b7e7-c8d9467f1132",
+          "collection": "/api/3/workflow_collections/a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
           "steps": [
             {
-              "uuid": "f95eb25c-9a95-40dc-a7ff-fec640be18f7",
+              "uuid": "630e09a7-b8b5-4dfe-bb69-f89b58f10a30",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "00e5f8fc-6d89-4578-998f-6e2f9eec5dd1",
-                "title": "CICD Utils: Unzip Export Template",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
                 "step_variables": {
                   "input": {
                     "records": "{{vars.input.records[0]}}"
                   }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "b0550a81-49db-477d-bf06-2398690ba052",
+              "uuid": "f08196a7-a32e-4733-9662-292c7e4451b9",
               "@type": "WorkflowStep",
               "name": "Unzip Export Template",
               "description": null,
@@ -67,42 +42,24 @@
               "arguments": {
                 "name": "CICD Utils",
                 "config": "''",
-                "params": [],
-                "version": "1.0.0",
+                "params": {
+                  "filepath": ""
+                },
+                "version": "1.1.0",
                 "connector": "cicd-utils",
                 "operation": "unzip_export_template",
-                "operationTitle": "Unzip Export Template",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
+                "operationTitle": "Unzip Export Template"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "a9e3ca81-61f8-4f40-ab45-f724246ea932",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Unzip Export Template",
-              "sourceStep": "/api/3/workflow_steps/f95eb25c-9a95-40dc-a7ff-fec640be18f7",
-              "targetStep": "/api/3/workflow_steps/b0550a81-49db-477d-bf06-2398690ba052"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "dfa9cc7a-3bcc-4310-a3aa-f922a8adcbf8",
-          "collection": "/api/3/workflow_collections/4f4fbda0-5154-4a6f-a344-b4eae4f0db26",
           "triggerLimit": null,
-          "description": "Split the export template file into three export templates named Production Content, Production Settings and Development Settings",
-          "name": "Split Export Template",
+          "description": "Unzip the specified export template zip file",
+          "name": "Unzip Export Template",
           "tag": "#CICD Utils",
           "recordTags": [
-            "Cicd",
             "cicd-utils"
           ],
           "isActive": false,
@@ -110,36 +67,43 @@
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/04428176-0388-47d4-922d-27102fc197a5",
+          "triggerStep": "/api/3/workflow_steps/630e09a7-b8b5-4dfe-bb69-f89b58f10a30",
+          "routes": [
+            {
+              "uuid": "f515ea21-9e20-496f-b04a-b253ef86b129",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Unzip Export Template",
+              "sourceStep": "/api/3/workflow_steps/630e09a7-b8b5-4dfe-bb69-f89b58f10a30",
+              "targetStep": "/api/3/workflow_steps/f08196a7-a32e-4733-9662-292c7e4451b9"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "867d942c-7040-4dda-944a-ee7b8a2643ec",
+          "collection": "/api/3/workflow_collections/a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
           "steps": [
             {
-              "uuid": "04428176-0388-47d4-922d-27102fc197a5",
+              "uuid": "cf7b9f3e-959a-4867-9d39-c75bee389dbf",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "5d5ef70c-d0fa-459d-b10f-206b66e0c8cc",
-                "title": "CICD Utils: Split Export Template",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
                 "step_variables": {
                   "input": {
                     "records": "{{vars.input.records[0]}}"
                   }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "883bc6a4-0c7e-4dd9-b2a6-5bf8b4a533de",
+              "uuid": "d9d2e67d-f8f0-4379-bd33-740abed0494e",
               "@type": "WorkflowStep",
               "name": "Split Export Template",
               "description": null,
@@ -147,29 +111,188 @@
               "arguments": {
                 "name": "CICD Utils",
                 "config": "''",
-                "params": [],
-                "version": "1.0.0",
+                "params": {
+                  "prod_content_filepath": "",
+                  "prod_content_json": "",
+                  "prod_settings_filepath": "",
+                  "prod_settings_json": "",
+                  "dev_settings_filepath": "",
+                  "dev_settings_json": "",
+                  "unzip_filepath": "",
+                  "zip_filename": ""
+                },
+                "version": "1.1.0",
                 "connector": "cicd-utils",
                 "operation": "split_export_templates",
-                "operationTitle": "Split Export Template",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
+                "operationTitle": "Split Export Template"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
+          "triggerLimit": null,
+          "description": "Split the export template file into three export templates named Production Content, Production Settings and Development Settings",
+          "name": "Split Export Template",
+          "tag": "#CICD Utils",
+          "recordTags": [
+            "cicd-utils"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/cf7b9f3e-959a-4867-9d39-c75bee389dbf",
           "routes": [
             {
+              "uuid": "d9e6f804-ef4e-480f-894a-7a9a45515028",
               "@type": "WorkflowRoute",
-              "uuid": "dfd5b651-11ec-4389-b925-5a78a265bfec",
               "label": null,
               "isExecuted": false,
               "name": "Start-> Split Export Template",
-              "sourceStep": "/api/3/workflow_steps/04428176-0388-47d4-922d-27102fc197a5",
-              "targetStep": "/api/3/workflow_steps/883bc6a4-0c7e-4dd9-b2a6-5bf8b4a533de"
+              "sourceStep": "/api/3/workflow_steps/cf7b9f3e-959a-4867-9d39-c75bee389dbf",
+              "targetStep": "/api/3/workflow_steps/d9d2e67d-f8f0-4379-bd33-740abed0494e"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "b5aa9c91-103d-4a31-8b8c-08532fcbab65",
+          "collection": "/api/3/workflow_collections/a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
+          "steps": [
+            {
+              "uuid": "4e1dbb20-60c4-4c0c-8366-6396e8eab4b5",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "da93f4db-e837-4599-8898-1ce7137ffa78",
+              "@type": "WorkflowStep",
+              "name": "Export FortiSOAR Template",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "CICD Utils",
+                "config": "''",
+                "params": {
+                  "export_template_name": "",
+                  "export_file_name": ""
+                },
+                "version": "1.1.0",
+                "connector": "cicd-utils",
+                "operation": "export_fortisoar_template",
+                "operationTitle": "Export FortiSOAR Template"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Export updated FortiSOAR Template's zip file.",
+          "name": "Export FortiSOAR Template",
+          "tag": "#CICD Utils",
+          "recordTags": [
+            "cicd-utils"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/4e1dbb20-60c4-4c0c-8366-6396e8eab4b5",
+          "routes": [
+            {
+              "uuid": "9cb442ad-1efc-48e9-b6cb-b17cd1c3e348",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Export FortiSOAR Template",
+              "sourceStep": "/api/3/workflow_steps/4e1dbb20-60c4-4c0c-8366-6396e8eab4b5",
+              "targetStep": "/api/3/workflow_steps/da93f4db-e837-4599-8898-1ce7137ffa78"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "d3855e79-c0ed-4f09-ba27-5d04dc303105",
+          "collection": "/api/3/workflow_collections/a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
+          "steps": [
+            {
+              "uuid": "28b480da-5465-4f0f-bcb4-f59fb4753e3c",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "81612d99-8312-4f8f-9019-d5d21e4fe36a",
+              "@type": "WorkflowStep",
+              "name": "Import FortiSOAR Template",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "CICD Utils",
+                "config": "''",
+                "params": {
+                  "filename": "",
+                  "file_path": ""
+                },
+                "version": "1.1.0",
+                "connector": "cicd-utils",
+                "operation": "import_fortisoar_template",
+                "operationTitle": "Import FortiSOAR Template"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Imports FortiSOAR Template zip file from FortiSOAR",
+          "name": "Import FortiSOAR Template",
+          "tag": "#CICD Utils",
+          "recordTags": [
+            "cicd-utils"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/28b480da-5465-4f0f-bcb4-f59fb4753e3c",
+          "routes": [
+            {
+              "uuid": "f123711c-aaf2-499f-ad66-4e324dcd7f81",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Import FortiSOAR Template",
+              "sourceStep": "/api/3/workflow_steps/28b480da-5465-4f0f-bcb4-f59fb4753e3c",
+              "targetStep": "/api/3/workflow_steps/81612d99-8312-4f8f-9019-d5d21e4fe36a"
             }
           ]
         }

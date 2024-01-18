@@ -1,8 +1,7 @@
 """
 Copyright start
-Copyright (C) 2008 - 2023 Fortinet Inc.
-All rights reserved.
-FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
+MIT License
+Copyright (c) 2024 Fortinet Inc
 Copyright end
 """
 
@@ -12,7 +11,10 @@ import shutil
 import pathlib
 from datetime import datetime
 from connectors.core.connector import get_logger, ConnectorError
-from connectors.cyops_utilities.files import save_file_in_env
+from connectors.cyops_utilities.files import save_file_in_env, download_file_from_cyops, upload_file_to_cyops
+from connectors.cyops_utilities.crudhub import make_cyops_request
+from .constants import *
+from time import sleep
 
 logger = get_logger('cicd-utils')
 
@@ -66,7 +68,165 @@ def split_export_templates(config, params, *args, **kwargs):
     return {'exportFileName': zip_filename + '.zip'}
 
 
+def export_fortisoar_template(config, params, *args, **kwargs):
+    try:
+        export_template_name = params.get('export_template_name')
+        export_file_name = params.get('export_file_name')
+        # Get Export Template Step
+        # GET_EXPORT_TEMPLATE['env'] = kwargs.get('env', {})
+        export_template = make_cyops_request(*args, **GET_EXPORT_TEMPLATE)
+
+        # Update export_template if not exists
+        template = {
+            "name": "Export Templates",
+            "type": "export_templates",
+            "query": {
+                "sort": [],
+                "limit": 1,
+                "logic": "AND",
+                "filters": [
+                    {
+                        "type": "primitive",
+                        "field": "name",
+                        "value": export_template_name,
+                        "operator": "eq",
+                        "_operator": "eq"
+                    }
+                ],
+                "__selectFields": ["uuid"]
+            },
+            "include": True,
+            "whenExists": "replace",
+            "moduleNotExists": True,
+            "includeCorrelations": False
+        }
+        config_info = export_template['hydra:member']
+        for item in config_info:
+            if item["name"] == export_template_name and item.get('options') and not any((rs['type'] == 'export_templates') for rs in item['options'].get('recordSets', [])):
+                item['options']['recordSets'].append(template)
+        filtered_config_info = [entry for entry in config_info if entry.get('name') == export_template_name]
+        if not filtered_config_info:
+            raise ConnectorError(f"No matching entry found for '{export_template_name}'")
+        uuid = filtered_config_info[0]['uuid']
+        update_iri = f"/api/3/export_templates/{uuid}"
+        update_export_template = make_cyops_request(iri=update_iri, method="PUT", body=filtered_config_info[0], *args, **kwargs)
+
+        # Start export job
+        export_job_uuid_iri = f"/api/export?fileName={export_file_name}.zip&template={uuid}"
+        export_job = make_cyops_request(iri=export_job_uuid_iri, method="PUT", *args, **kwargs)
+        export_job_uuid = export_job['jobUuid']
+        export_job_iri = f'/api/3/export_jobs/{export_job_uuid}'
+
+        # Monitor export job status
+        for _ in range(10):
+            export_job_details = make_cyops_request(iri=export_job_iri, method='GET', *args, **kwargs)
+            if export_job_details['status'] == "Export Complete":
+                break
+            sleep(15)
+        else:
+            raise ConnectorError(f"Export job status: {export_job_details['status']}")
+
+        # Download and unzip file
+        file_iri = export_job_details["file"]['@id']
+        zip_file = download_file_from_cyops(file_iri, *args, **kwargs)
+        unzip_file = unzip_export_template(config={}, params={'filepath': zip_file['cyops_file_path']})
+
+        # Modify export
+        # Set parameters for modify_export function
+        params = {
+            "zip_filename": export_file_name,
+            "unzip_filepath": f"/{unzip_file['filenames'][0].split('/')[1]}/{unzip_file['filenames'][0].split('/')[2]}",
+            "dev_settings_json": [],
+            "prod_content_json": [],
+            "prod_settings_json": [],
+            "dev_settings_filepath": f'/{unzip_file["filenames"][0].split("/")[1]}/{unzip_file["filenames"][0].split("/")[2]}/{export_file_name}/records/export_templates/Source Control - Development Settings.json',
+            "prod_content_filepath": f'/{unzip_file["filenames"][0].split("/")[1]}/{unzip_file["filenames"][0].split("/")[2]}/{export_file_name}/records/export_templates/Source Control - Production Content.json',
+            "prod_settings_filepath": f'/{unzip_file["filenames"][0].split("/")[1]}/{unzip_file["filenames"][0].split("/")[2]}/{export_file_name}/records/export_templates/Source Control - Production Settings.json'
+        }
+        for entry in config_info:
+            if entry.get('name') == 'Source Control - Development Settings':
+                params['dev_settings_json'].append(entry)
+            elif entry.get('name') == 'Source Control - Production Content':
+                params['prod_content_json'].append(entry)
+            elif entry.get('name') == 'Source Control - Production Settings':
+                params['prod_settings_json'].append(entry)
+        split_export_templates(config={}, params=params)
+
+        # Upload the modified file back to cyops
+        uploaded_file = upload_file_to_cyops(file_path=f"{export_file_name}.zip", filename=f"{export_file_name}.zip", *args, **kwargs)
+        return {"file_iri": uploaded_file['@id']}
+    except Exception as err:
+        logger.error(err)
+        raise ConnectorError(err)
+
+
+def import_fortisoar_template(config, params, *args, **kwargs):
+    try:
+        filename = params.get('filename')
+        file_path = params.get('file_path')
+        clone_zip_file = upload_file_to_cyops(file_path, filename=filename, *args, **kwargs)
+        logger.info(" Creating import job")
+        # Create import job
+        import_job_iri = "/api/3/import_jobs"
+        payload = {
+            "status": "Draft",
+            "file": {
+                "@context": clone_zip_file['@context'],
+                "@id": clone_zip_file['@id'],
+                "@type": "File",
+                "uuid": clone_zip_file['uuid'],
+                "assignee": "",
+                "id": clone_zip_file['uuid'],
+                "filename": clone_zip_file['filename'],
+                "mimeType": "application/zip"
+            }
+        }
+        import_job = make_cyops_request(iri=import_job_iri, method="POST", body=payload, *args, **kwargs)
+        logger.info(f"Job Created : {import_job}")
+        # Start import job
+        logger.info("starting job ")
+        import_job_uuid = import_job['uuid']
+        import_job_iri_uuid = f'/api/import/{import_job_uuid}'
+        import_job_details = make_cyops_request(iri=import_job_iri_uuid, method='GET', *args, **kwargs)
+
+        logger.info(f"Job details: {import_job_details}")
+        # Monitor import job status
+        logger.info("Monitor export job status")
+        import_job_iri = f'/api/3/import_jobs/{import_job_uuid}?__selectFields=errorMessage,status,progressPercent,file,currentlyImporting,options'
+        for _ in range(5):
+            import_job_details = make_cyops_request(iri=import_job_iri, method='GET', *args, **kwargs)
+            logger.info(f"Monitor export job status: {import_job_details['status']}")
+            if import_job_details['status'] == "Reviewing":
+                break
+            sleep(5)
+        else:
+            logger.error(f"Import job status: {import_job_details['status']}")
+            raise ConnectorError(f"Import job status is not updated. current status is {import_job_details['status']}")
+
+        # Update mport Job
+        logger.info("Updating import job")
+        iri = f'/api/3/import_jobs/{import_job_details["uuid"]}'
+        playbooks = []
+        if import_job_details["options"].get("playbooks"):
+            for item in import_job_details["options"]["playbooks"]["values"]["collections"]["values"]:
+                if item.get("mergeType") == "merge_append":
+                    item["mergeType"] = "merge_replace"
+                    playbooks.append(item)
+            import_job_details["options"]["playbooks"]["values"]["collections"]["values"] = playbooks
+        res = make_cyops_request(iri=iri, method='PUT', body=import_job_details, *args, **kwargs)
+        logger.warning(f"Updated Import Job: {res}")
+
+        # Import Zip File
+        logger.info("Importing zip file")
+        return make_cyops_request(iri=import_job_iri_uuid, method='PUT', body=import_job_details, *args, **kwargs)
+    except Exception as err:
+        logger.error(err)
+        raise ConnectorError(err)
+
+
 operations = {
     'unzip_export_template': unzip_export_template,
-    'split_export_templates': split_export_templates
+    'split_export_templates': split_export_templates,
+    'export_fortisoar_template': export_fortisoar_template,
+    'import_fortisoar_template': import_fortisoar_template
 }
