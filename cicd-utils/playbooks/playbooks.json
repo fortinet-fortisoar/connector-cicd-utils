@@ -189,7 +189,90 @@
                 "config": "''",
                 "params": {
                   "export_template_name": "",
-                  "export_file_name": ""
+                  "export_file_name": "",
+                  "remove_keys_from": [
+                    {
+                      "file_path": "/info.json",
+                      "operations": [
+                        {
+                          "key_path": "contents.globalVariables",
+                          "key_type": "list",
+                          "key_to_compare": "name",
+                          "values_to_remove": [
+                            "Default_Email",
+                            "Server_fqhn"
+                          ]
+                        },
+                        {
+                          "key_path": "",
+                          "key_type": "dict",
+                          "keys_to_remove": [
+                            "exported_from",
+                            "date"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "file_path": "/playbooks/globalVariables.json",
+                      "operations": [
+                        {
+                          "key_path": "",
+                          "key_type": "list",
+                          "key_to_compare": "name",
+                          "values_to_remove": [
+                            "Default_Email",
+                            "Server_fqhn"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "file_path": "/records/export_templates/Source Control - Production Content.json",
+                      "operations": [
+                        {
+                          "key_path": "",
+                          "key_type": "dict",
+                          "keys_to_remove": [
+                            "modifyDate",
+                            "modifyUser",
+                            "id",
+                            "lastExportDate"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "file_path": "/records/export_templates/Source Control - Development Settings.json",
+                      "operations": [
+                        {
+                          "key_path": "",
+                          "key_type": "dict",
+                          "keys_to_remove": [
+                            "modifyDate",
+                            "modifyUser",
+                            "id",
+                            "lastExportDate"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "file_path": "/records/export_templates/Source Control - Production Settings.json",
+                      "operations": [
+                        {
+                          "key_path": "",
+                          "key_type": "dict",
+                          "keys_to_remove": [
+                            "modifyDate",
+                            "modifyUser",
+                            "id",
+                            "lastExportDate"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "version": "1.1.0",
                 "connector": "cicd-utils",
