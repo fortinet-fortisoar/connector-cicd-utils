@@ -140,7 +140,7 @@
       "description": "Export updated FortiSOAR Template's zip file.",
       "output_schema": {
         "file_iri": ""
-    },
+      },
       "parameters": [
         {
           "title": "Export Template Name",
@@ -161,6 +161,99 @@
           "editable": true,
           "description": "Specify the export file name to retrieve export templates.",
           "tooltip": "Specify the export file name to retrieve export templates."
+        },
+        {
+          "title": "Ignore Keys",
+          "type": "json",
+          "name": "ignore_keys",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": [
+            {
+              "file_path": "/info.json",
+              "operations": [
+                {
+                  "key_path": "contents.globalVariables",
+                  "key_type": "list",
+                  "key_to_compare": "name",
+                  "values_to_remove": [
+                    "Default_Email",
+                    "Server_fqhn"
+                  ]
+                },
+                {
+                  "key_path": "",
+                  "key_type": "dict",
+                  "keys_to_remove": [
+                    "exported_from",
+                    "date"
+                  ]
+                }
+              ]
+            },
+            {
+              "file_path": "/playbooks/globalVariables.json",
+              "operations": [
+                {
+                  "key_path": "",
+                  "key_type": "list",
+                  "key_to_compare": "name",
+                  "values_to_remove": [
+                    "Default_Email",
+                    "Server_fqhn"
+                  ]
+                }
+              ]
+            },
+            {
+              "file_path": "/records/export_templates/Source Control - Production Content.json",
+              "operations": [
+                {
+                  "key_path": "",
+                  "key_type": "dict",
+                  "keys_to_remove": [
+                    "modifyDate",
+                    "modifyUser",
+                    "id",
+                    "lastExportDate"
+                  ]
+                }
+              ]
+            },
+            {
+              "file_path": "/records/export_templates/Source Control - Development Settings.json",
+              "operations": [
+                {
+                  "key_path": "",
+                  "key_type": "dict",
+                  "keys_to_remove": [
+                    "modifyDate",
+                    "modifyUser",
+                    "id",
+                    "lastExportDate"
+                  ]
+                }
+              ]
+            },
+            {
+              "file_path": "/records/export_templates/Source Control - Production Settings.json",
+              "operations": [
+                {
+                  "key_path": "",
+                  "key_type": "dict",
+                  "keys_to_remove": [
+                    "modifyDate",
+                    "modifyUser",
+                    "id",
+                    "lastExportDate"
+                  ]
+                }
+              ]
+            }
+          ],
+          "description": "Specify the key's details which are to be removed from specified files. For example: [\n    {\n        \"file_path\": \"/info.json\",\n        \"operations\": [\n            {\n                \"key_path\": \"contents.globalVariables\",\n                \"key_type\": \"list\",\n                \"key_to_compare\": \"name\",\n                \"values_to_remove\": [\"Default_Email\", \"Server_fqhn\"]\n            },\n            {\n                \"key_path\": \"\",\n                \"key_type\": \"dict\",\n                \"keys_to_remove\": [\"exported_from\", \"date\"]\n            }\n\n        ]\n    }]",
+          "tooltip": "Specify the key's details which are to be removed from specified files. For more information, see connector documentation."
         }
       ],
       "enabled": true
