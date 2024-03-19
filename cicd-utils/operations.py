@@ -63,8 +63,6 @@ def split_export_templates(config, params, *args, **kwargs):
         zip_filename = '/tmp/{0}'.format(zip_filename)
 
     shutil.make_archive(zip_filename, 'zip', unzip_filepath)
-
-    save_file_in_env(env, zip_filename)
     save_file_in_env(env, zip_filename + '.zip')
     return {'exportFileName': zip_filename + '.zip'}
 
@@ -152,7 +150,7 @@ def export_fortisoar_template(config, params, *args, **kwargs):
                 params['prod_content_json'].append(entry)
             elif entry.get('name') == 'Source Control - Production Settings':
                 params['prod_settings_json'].append(entry)
-        split_export_templates(config={}, params=params)
+        split_export_templates(config={}, params=params, *args, **kwargs)
 
         # Remove the unnecessary diff
         if update_input_params:
@@ -220,7 +218,7 @@ def import_fortisoar_template(config, params, *args, **kwargs):
                     playbooks.append(item)
             import_job_details["options"]["playbooks"]["values"]["collections"]["values"] = playbooks
         res = make_cyops_request(iri=iri, method='PUT', body=import_job_details, *args, **kwargs)
-        logger.warning(f"Updated Import Job: {res}")
+        logger.debug(f"Updated Import Job: {res}")
 
         # Import Zip File
         logger.info("Importing zip file")
@@ -254,14 +252,20 @@ def remove_keys_from_fortisoar_exported_zip(export_file_name, update_input_param
                         temp = temp.get(key)
             if op.get('key_type') == 'dict':
                 for k in op.get('keys_to_remove'):
-                    if k in temp.keys():
-                        temp.pop(k)
-                    else:
-                        logger.error("{0} key not found key_path {1}".format(key, op.get('key_path')))
+                    temp.pop(k) if k in temp.keys() else logger.warning("{0} key not found key_path {1}".format(key, op.get('key_path')))
             elif op.get('key_type') == 'list':
                 key_to_compare = op.get('key_to_compare')
-                values_to_remove = set(op.get('values_to_remove'))
-                filtered_list = [obj for obj in temp if obj.get(key_to_compare) not in values_to_remove]
+                values_to_remove = op.get('values_to_remove')
+                keys_to_remove = op.get('keys_to_remove')
+                filtered_list = []
+                for obj in temp:
+                    if key_to_compare and values_to_remove:
+                        if obj.get(key_to_compare) in values_to_remove:
+                            continue
+                    if keys_to_remove:
+                        for k in keys_to_remove:
+                            obj.pop(k) if k in obj.keys() else logger.warning("{0} key not found key_path {1}".format(k, op.get('key_path')))
+                    filtered_list.append(obj)
                 if not op.get('key_path'):
                     return filtered_list
                 key = key_path_elements.pop()
@@ -270,30 +274,35 @@ def remove_keys_from_fortisoar_exported_zip(export_file_name, update_input_param
                     temp = temp.get(k)
                 temp[key] = filtered_list
             return json_data
-        except Exception as error:
-            logger.error("Error occurred while updating file {0} for operation : {1}".format(param.get("file_path"), op))
-            raise ConnectorError(error)
+        except Exception as err:
+            logger.exception("Error occurred while updating {0} file for following operation: {1}.\nError: {2}".format(param.get("file_path"), op, str(err)))
+            return json_data
 
     env = kwargs.get('env', {})
     file_path = f'/tmp/{export_file_name}'
     shutil.unpack_archive(f'{file_path}.zip', file_path, 'zip')
     save_file_in_env(env, file_path)
     for param in update_input_params:
-        # load file
-        data = load_json_file_data(f'{file_path}/{export_file_name}/{param.get("file_path").strip("/")}')
-        # Process all operations
-        for operation in param.get('operations'):
-            if not isinstance(data, (list, dict)):
-                raise ConnectorError("Invalid type {0} to update {1} file.".format(type(data), param.get('file_path')))
-            elif isinstance(data, dict) or (not operation.get('key_path') and operation.get('key_type') == 'list'):
-                updated_data = update_data(data, operation)
-            else:
-                updated_data = []
-                for json_data in data:
-                    u_data = update_data(json_data, operation)
-                    updated_data.append(u_data)
-        # Write updated file
-        write_data_into_json_file(f'{file_path}/{export_file_name}/{param.get("file_path").strip("/")}', updated_data)
+        try:
+            # load file
+            data = load_json_file_data(f'{file_path}/{export_file_name}/{param.get("file_path").strip("/")}')
+            # Process all operations
+            if data:
+                for operation in param.get('operations'):
+                    if not isinstance(data, (list, dict)):
+                        logger.error("Invalid type '{0}' to update {1} file.".format(type(data), param.get('file_path')))
+                        raise ConnectorError("Invalid type '{0}' to update {1} file.".format(type(data), param.get('file_path')))
+                    elif isinstance(data, dict) or (not operation.get('key_path') and operation.get('key_type') == 'list'):
+                        updated_data = update_data(data, operation)
+                    else:
+                        updated_data = []
+                        for json_data in data:
+                            u_data = update_data(json_data, operation)
+                            updated_data.append(u_data)
+                # Write updated file
+                write_data_into_json_file(f'{file_path}/{export_file_name}/{param.get("file_path").strip("/")}', updated_data)
+        except Exception as error:
+            logger.exception("Error occurred for {0} file. Error: {1}".format(param.get('file_path'), str(error)))
     zip_file = shutil.make_archive(file_path, 'zip', file_path)
     save_file_in_env(env, "{0}.zip".format(file_path))
     return zip_file
