@@ -190,7 +190,7 @@
                 "params": {
                   "export_template_name": "",
                   "export_file_name": "",
-                  "remove_keys_from": [
+                  "ignore_keys": [
                     {
                       "file_path": "/info.json",
                       "operations": [
@@ -200,7 +200,8 @@
                           "key_to_compare": "name",
                           "values_to_remove": [
                             "Default_Email",
-                            "Server_fqhn"
+                            "Server_fqhn",
+                            "Demo_mode"
                           ]
                         },
                         {
@@ -222,7 +223,8 @@
                           "key_to_compare": "name",
                           "values_to_remove": [
                             "Default_Email",
-                            "Server_fqhn"
+                            "Server_fqhn",
+                            "Demo_mode"
                           ]
                         }
                       ]
@@ -237,7 +239,9 @@
                             "modifyDate",
                             "modifyUser",
                             "id",
-                            "lastExportDate"
+                            "lastExportDate",
+                            "createUser",
+                            "createDate"
                           ]
                         }
                       ]
@@ -252,7 +256,9 @@
                             "modifyDate",
                             "modifyUser",
                             "id",
-                            "lastExportDate"
+                            "lastExportDate",
+                            "createUser",
+                            "createDate"
                           ]
                         }
                       ]
@@ -267,7 +273,21 @@
                             "modifyDate",
                             "modifyUser",
                             "id",
-                            "lastExportDate"
+                            "lastExportDate",
+                            "createUser",
+                            "createDate"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "file_path": "/playbooks/03 - Enrich/Get Unprocessed Indicators.json",
+                      "operations": [
+                        {
+                          "key_path": "schedules",
+                          "key_type": "list",
+                          "keys_to_remove": [
+                            "date_changed"
                           ]
                         }
                       ]
