@@ -285,7 +285,7 @@
             }
           ],
           "triggerLimit": null,
-          "description": "Export updated FortiSOAR Template's zip file.",
+          "description": "Exports updated FortiSOAR™ Template's zip file.",
           "name": "Export FortiSOAR Template",
           "tag": "#CICD Utils",
           "recordTags": [
@@ -355,7 +355,7 @@
             }
           ],
           "triggerLimit": null,
-          "description": "Imports FortiSOAR Template zip file from FortiSOAR",
+          "description": "Imports FortiSOAR™ Template zip file in FortiSOAR™.",
           "name": "Import FortiSOAR Template",
           "tag": "#CICD Utils",
           "recordTags": [

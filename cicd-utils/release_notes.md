@@ -1,4 +1,4 @@
 #### What's Improved
-- Added following new actions 
-  - Import FortiSOAR Template
+- Added following new actions: 
+  - Import FortiSOAR Template 
   - Export FortiSOAR Template

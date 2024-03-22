@@ -9,7 +9,7 @@
   "icon_small_name": "default_small.png",
   "icon_large_name": "default_large.png",
   "category": "Utilities",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.1.0/cicd-utils/809/cicd-utils-v1-1-0",
   "configuration": {},
   "operations": [
     {
@@ -17,7 +17,7 @@
       "operation": "unzip_export_template",
       "annotation": "unzip_export_template",
       "category": "utilities",
-      "description": "Unzip the specified export template zip file",
+      "description": "Unzips the specified export template zip file.",
       "output_schema": {
         "filenames": []
       },
@@ -137,7 +137,7 @@
       "operation": "export_fortisoar_template",
       "annotation": "export_fortisoar_template",
       "category": "utilities",
-      "description": "Export updated FortiSOAR Template's zip file.",
+      "description": "Exports updated FortiSOAR™ Template's zip file.",
       "output_schema": {
         "file_iri": ""
       },
@@ -149,8 +149,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "description": "Specify the export template name to retrieve export templates.",
-          "tooltip": "Specify the export template name to retrieve export templates."
+          "description": "Specify the export template's name to export from FortiSOAR™.",
+          "tooltip": "Specify the export template's name to export from FortiSOAR™."
         },
         {
           "title": "Export File Name",
@@ -159,8 +159,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "description": "Specify the export file name to retrieve export templates.",
-          "tooltip": "Specify the export file name to retrieve export templates."
+          "description": "Specify a file name for the template being exported.",
+          "tooltip": "Specify a file name for the template being exported."
         },
         {
           "title": "Ignore Keys",
@@ -252,8 +252,8 @@
               ]
             }
           ],
-          "description": "Specify the key's details which are to be removed from specified files. For example: [\n    {\n        \"file_path\": \"/info.json\",\n        \"operations\": [\n            {\n                \"key_path\": \"contents.globalVariables\",\n                \"key_type\": \"list\",\n                \"key_to_compare\": \"name\",\n                \"values_to_remove\": [\"Default_Email\", \"Server_fqhn\"]\n            },\n            {\n                \"key_path\": \"\",\n                \"key_type\": \"dict\",\n                \"keys_to_remove\": [\"exported_from\", \"date\"]\n            }\n\n        ]\n    }]",
-          "tooltip": "Specify the key's details which are to be removed from specified files. For more information, see connector documentation."
+          "description": "Specify the key's details to remove from the template files being exported. For example:\n[\n    {\n        \"file_path\": \"/info.json\",\n        \"operations\": [\n        {\n            \"key_path\": \"contents.globalVariables\",\n            \"key_type\": \"list\",\n            \"key_to_compare\": \"name\",\n            \"values_to_remove\": [\n            \"Default_Email\",\n            \"Server_fqhn\"\n            ]\n        },\n        {\n            \"key_path\": \"\",\n            \"key_type\": \"dict\",\n            \"keys_to_remove\": [\n            \"exported_from\",\n            \"date\"\n            ]\n        }\n        ]\n    }\n]\nFor more information, refer Detailing Ignore Keys Parameter section.",
+          "tooltip": "Specify the key's details to remove from the template files being exported. For more information, see connector documentation."
         }
       ],
       "enabled": true
@@ -263,7 +263,7 @@
       "operation": "import_fortisoar_template",
       "annotation": "import_fortisoar_template",
       "category": "utilities",
-      "description": "Imports FortiSOAR Template zip file from FortiSOAR",
+      "description": "Imports FortiSOAR™ Template zip file in FortiSOAR™.",
       "output_schema": {},
       "parameters": [
         {
@@ -273,8 +273,9 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "description": "Specify the name of file on the filesystem.",
-          "tooltip": ""
+          "placeholder": "For example: /tmp/github-fortisoar-prod-content-2024-01-10-12-16-24-315685.zip",
+          "description": "Specify the path of the FortiSOAR™ Template file to be imported. For example: /tmp/github-fortisoar-prod-content-2024-01-10-12-16-24-315685.zip",
+          "tooltip": "Specify the path of the FortiSOAR™ Template file to be imported."
         },
         {
           "title": "File Path",
@@ -283,8 +284,8 @@
           "required": true,
           "visible": true,
           "editable": true,
-          "description": "Specify the path of the FortiSOAR Template file to be imported. e.g. /tmp/github-fortisoar-prod-content-2024-01-10-12-16-24-315685.zip",
-          "tooltip": "Specify the path of the FortiSOAR Template file to be imported.",
+          "description": "Specify the path of the FortiSOAR™ Template file to be imported. e.g. /tmp/github-fortisoar-prod-content-2024-01-10-12-16-24-315685.zip",
+          "tooltip": "Specify the path of the FortiSOAR™ Template file to be imported.",
           "placeholder": "e.g. /tmp/github-fortisoar-prod-content-2024-01-10-12-16-24-315685.zip"
         }
       ],
