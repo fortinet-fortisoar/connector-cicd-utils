@@ -118,11 +118,11 @@ def export_fortisoar_template(config, params, *args, **kwargs):
         export_job_iri = f'/api/3/export_jobs/{export_job_uuid}'
 
         # Monitor export job status
-        for _ in range(10):
+        for _ in range(RETRY_COUNT):
             export_job_details = make_cyops_request(iri=export_job_iri, method='GET', *args, **kwargs)
             if export_job_details['status'] == "Export Complete":
                 break
-            sleep(15)
+            sleep(EXPORT_STATUS_TO_COMPLETE_DELAY)
         else:
             raise ConnectorError(f"Export job status: {export_job_details['status']}")
 
@@ -197,12 +197,12 @@ def import_fortisoar_template(config, params, *args, **kwargs):
         # Monitor import job status
         logger.info("Monitor export job status")
         import_job_iri = f'/api/3/import_jobs/{import_job_uuid}?__selectFields=errorMessage,status,progressPercent,file,currentlyImporting,options'
-        for _ in range(5):
+        for _ in range(RETRY_COUNT):
             import_job_details = make_cyops_request(iri=import_job_iri, method='GET', *args, **kwargs)
             logger.info(f"Monitor export job status: {import_job_details['status']}")
             if import_job_details['status'] == "Reviewing":
                 break
-            sleep(5)
+            sleep(EXPORT_STATUS_TO_REVIEWING_DELAY)
         else:
             logger.error(f"Import job status: {import_job_details['status']}")
             raise ConnectorError(f"Import job status is not updated. current status is {import_job_details['status']}")
