@@ -228,6 +228,60 @@ def import_fortisoar_template(config, params, *args, **kwargs):
         raise ConnectorError(err)
 
 
+def review_import_fortisoar_template(config, params, *args, **kwargs):
+    try:
+        filename = params.get('filename')
+        file_path = params.get('file_path')
+        clone_zip_file = upload_file_to_cyops(
+            file_path, filename=filename, *args, **kwargs)
+        logger.info(" Creating import job")
+        # Create import job
+        import_job_iri = "/api/3/import_jobs"
+        payload = {
+            "status": "Draft",
+            "file": {
+                "@context": clone_zip_file['@context'],
+                "@id": clone_zip_file['@id'],
+                "@type": "File",
+                "uuid": clone_zip_file['uuid'],
+                "assignee": "",
+                "id": clone_zip_file['uuid'],
+                "filename": clone_zip_file['filename'],
+                "mimeType": "application/zip"
+            }
+        }
+        import_job = make_cyops_request(
+            iri=import_job_iri, method="POST", body=payload, *args, **kwargs)
+        logger.info(f"Job Created : {import_job}")
+        # Start import job
+        logger.info("starting job ")
+        import_job_uuid = import_job['uuid']
+        import_job_iri_uuid = f'/api/import/{import_job_uuid}'
+        import_job_details = make_cyops_request(
+            iri=import_job_iri_uuid, method='GET', *args, **kwargs)
+
+        logger.info(f"Job details: {import_job_details}")
+        # Monitor import job status
+        logger.info("Monitor export job status")
+        import_job_iri = f'/api/3/import_jobs/{import_job_uuid}?__selectFields=errorMessage,status,progressPercent,file,currentlyImporting,options'
+        for _ in range(RETRY_COUNT):
+            import_job_details = make_cyops_request(
+                iri=import_job_iri, method='GET', *args, **kwargs)
+            logger.info(
+                f"Monitor export job status: {import_job_details['status']}")
+            if import_job_details['status'] == "Reviewing":
+                break
+            sleep(EXPORT_STATUS_TO_REVIEWING_DELAY)
+        else:
+            logger.error(f"Import job status: {import_job_details['status']}")
+            raise ConnectorError(
+                f"Import job status is not updated. current status is {import_job_details['status']}")
+        return import_job_details
+    except Exception as err:
+        logger.error(err)
+        raise ConnectorError(err)
+    
+
 def remove_keys_from_fortisoar_exported_zip(export_file_name, update_input_params, *args, **kwargs):
 
     def load_json_file_data(filepath):
@@ -312,5 +366,6 @@ operations = {
     'unzip_export_template': unzip_export_template,
     'split_export_templates': split_export_templates,
     'export_fortisoar_template': export_fortisoar_template,
-    'import_fortisoar_template': import_fortisoar_template
+    'import_fortisoar_template': import_fortisoar_template,
+    'review_import_fortisoar_template': review_import_fortisoar_template,
 }

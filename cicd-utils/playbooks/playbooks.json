@@ -2,171 +2,70 @@
   "type": "workflow_collections",
   "data": [
     {
-      "uuid": "a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
       "@type": "WorkflowCollection",
-      "name": "Sample - CICD Utils - 1.1.0",
+      "name": "Sample - CICD Utils - 1.2.0",
       "description": "CICD Utils provides out of the box actions for CICD solution pack",
       "visible": true,
+      "image": "data:png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1MDNhYTZiMy0zYzEzLTQ5YzEtODNiZi00MThjZWIxM2VhNTIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzczNzc3Q0Q0MEZCMTFFQThFQzFGQkM3QjBDODM2NTciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzczNzc3Q0M0MEZCMTFFQThFQzFGQkM3QjBDODM2NTciIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpmNTgxNzliMi0xMTFmLTRjNzQtOTg4NS1hZjUzMjQ2OGFiY2IiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NTAzYWE2YjMtM2MxMy00OWMxLTgzYmYtNDE4Y2ViMTNlYTUy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",
+      "uuid": "a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
+      "id": 37,
+      "deletedAt": null,
+      "importedBy": [],
       "recordTags": [
         "cicd-utils"
       ],
       "workflows": [
         {
           "@type": "Workflow",
-          "uuid": "fa078ac4-d712-4a5c-b7e7-c8d9467f1132",
-          "collection": "/api/3/workflow_collections/a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
-          "steps": [
-            {
-              "uuid": "630e09a7-b8b5-4dfe-bb69-f89b58f10a30",
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "step_variables": {
-                  "input": {
-                    "records": "{{vars.input.records[0]}}"
-                  }
-                }
-              },
-              "left": "20",
-              "top": "20",
-              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
-            },
-            {
-              "uuid": "f08196a7-a32e-4733-9662-292c7e4451b9",
-              "@type": "WorkflowStep",
-              "name": "Unzip Export Template",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "name": "CICD Utils",
-                "config": "''",
-                "params": {
-                  "filepath": ""
-                },
-                "version": "1.1.0",
-                "connector": "cicd-utils",
-                "operation": "unzip_export_template",
-                "operationTitle": "Unzip Export Template"
-              },
-              "left": "188",
-              "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
           "triggerLimit": null,
-          "description": "Unzip the specified export template zip file",
-          "name": "Unzip Export Template",
+          "name": "Split Export Template",
+          "aliasName": null,
           "tag": "#CICD Utils",
-          "recordTags": [
-            "cicd-utils"
-          ],
+          "description": "Split the export template file into three export templates named Production Content, Production Settings and Development Settings",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/630e09a7-b8b5-4dfe-bb69-f89b58f10a30",
-          "routes": [
-            {
-              "uuid": "f515ea21-9e20-496f-b04a-b253ef86b129",
-              "@type": "WorkflowRoute",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Unzip Export Template",
-              "sourceStep": "/api/3/workflow_steps/630e09a7-b8b5-4dfe-bb69-f89b58f10a30",
-              "targetStep": "/api/3/workflow_steps/f08196a7-a32e-4733-9662-292c7e4451b9"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "867d942c-7040-4dda-944a-ee7b8a2643ec",
+          "lastModifyDate": null,
           "collection": "/api/3/workflow_collections/a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/cf7b9f3e-959a-4867-9d39-c75bee389dbf",
           "steps": [
             {
-              "uuid": "cf7b9f3e-959a-4867-9d39-c75bee389dbf",
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "step_variables": {
-                  "input": {
-                    "records": "{{vars.input.records[0]}}"
-                  }
-                }
-              },
-              "left": "20",
-              "top": "20",
-              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
-            },
-            {
-              "uuid": "d9d2e67d-f8f0-4379-bd33-740abed0494e",
               "@type": "WorkflowStep",
               "name": "Split Export Template",
               "description": null,
-              "status": null,
               "arguments": {
                 "name": "CICD Utils",
                 "config": "''",
                 "params": {
-                  "prod_content_filepath": "",
+                  "zip_filename": "",
+                  "unzip_filepath": "",
+                  "dev_settings_json": "",
                   "prod_content_json": "",
-                  "prod_settings_filepath": "",
                   "prod_settings_json": "",
                   "dev_settings_filepath": "",
-                  "dev_settings_json": "",
-                  "unzip_filepath": "",
-                  "zip_filename": ""
+                  "prod_content_filepath": "",
+                  "prod_settings_filepath": ""
                 },
-                "version": "1.1.0",
+                "version": "1.2.0",
                 "connector": "cicd-utils",
                 "operation": "split_export_templates",
                 "operationTitle": "Split Export Template"
               },
-              "left": "188",
+              "status": null,
               "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
-          "triggerLimit": null,
-          "description": "Split the export template file into three export templates named Production Content, Production Settings and Development Settings",
-          "name": "Split Export Template",
-          "tag": "#CICD Utils",
-          "recordTags": [
-            "cicd-utils"
-          ],
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/cf7b9f3e-959a-4867-9d39-c75bee389dbf",
-          "routes": [
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "d9d2e67d-f8f0-4379-bd33-740abed0494e"
+            },
             {
-              "uuid": "d9e6f804-ef4e-480f-894a-7a9a45515028",
-              "@type": "WorkflowRoute",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Split Export Template",
-              "sourceStep": "/api/3/workflow_steps/cf7b9f3e-959a-4867-9d39-c75bee389dbf",
-              "targetStep": "/api/3/workflow_steps/d9d2e67d-f8f0-4379-bd33-740abed0494e"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "b5aa9c91-103d-4a31-8b8c-08532fcbab65",
-          "collection": "/api/3/workflow_collections/a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
-          "steps": [
-            {
-              "uuid": "4e1dbb20-60c4-4c0c-8366-6396e8eab4b5",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
-              "status": null,
               "arguments": {
                 "step_variables": {
                   "input": {
@@ -174,22 +73,66 @@
                   }
                 }
               },
-              "left": "20",
+              "status": null,
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
-            },
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "cf7b9f3e-959a-4867-9d39-c75bee389dbf"
+            }
+          ],
+          "routes": [
             {
-              "uuid": "da93f4db-e837-4599-8898-1ce7137ffa78",
+              "@type": "WorkflowRoute",
+              "name": "Start-> Split Export Template",
+              "targetStep": "/api/3/workflow_steps/d9d2e67d-f8f0-4379-bd33-740abed0494e",
+              "sourceStep": "/api/3/workflow_steps/cf7b9f3e-959a-4867-9d39-c75bee389dbf",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "d9e6f804-ef4e-480f-894a-7a9a45515028"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "867d942c-7040-4dda-944a-ee7b8a2643ec",
+          "id": 1091,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "cicd-utils"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Export FortiSOAR Template",
+          "aliasName": null,
+          "tag": "#CICD Utils",
+          "description": "Exports updated FortiSOAR™ Template's zip file.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/4e1dbb20-60c4-4c0c-8366-6396e8eab4b5",
+          "steps": [
+            {
               "@type": "WorkflowStep",
               "name": "Export FortiSOAR Template",
               "description": null,
-              "status": null,
               "arguments": {
                 "name": "CICD Utils",
                 "config": "''",
                 "params": {
-                  "export_template_name": "",
-                  "export_file_name": "",
                   "ignore_keys": [
                     {
                       "file_path": "/info.json",
@@ -292,54 +235,26 @@
                         }
                       ]
                     }
-                  ]
+                  ],
+                  "export_file_name": "",
+                  "export_template_name": ""
                 },
-                "version": "1.1.0",
+                "version": "1.2.0",
                 "connector": "cicd-utils",
                 "operation": "export_fortisoar_template",
                 "operationTitle": "Export FortiSOAR Template"
               },
-              "left": "188",
+              "status": null,
               "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
-          "triggerLimit": null,
-          "description": "Exports updated FortiSOAR™ Template's zip file.",
-          "name": "Export FortiSOAR Template",
-          "tag": "#CICD Utils",
-          "recordTags": [
-            "cicd-utils"
-          ],
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/4e1dbb20-60c4-4c0c-8366-6396e8eab4b5",
-          "routes": [
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "da93f4db-e837-4599-8898-1ce7137ffa78"
+            },
             {
-              "uuid": "9cb442ad-1efc-48e9-b6cb-b17cd1c3e348",
-              "@type": "WorkflowRoute",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Export FortiSOAR Template",
-              "sourceStep": "/api/3/workflow_steps/4e1dbb20-60c4-4c0c-8366-6396e8eab4b5",
-              "targetStep": "/api/3/workflow_steps/da93f4db-e837-4599-8898-1ce7137ffa78"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "d3855e79-c0ed-4f09-ba27-5d04dc303105",
-          "collection": "/api/3/workflow_collections/a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
-          "steps": [
-            {
-              "uuid": "28b480da-5465-4f0f-bcb4-f59fb4753e3c",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
-              "status": null,
               "arguments": {
                 "step_variables": {
                   "input": {
@@ -347,16 +262,62 @@
                   }
                 }
               },
-              "left": "20",
+              "status": null,
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
-            },
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "4e1dbb20-60c4-4c0c-8366-6396e8eab4b5"
+            }
+          ],
+          "routes": [
             {
-              "uuid": "81612d99-8312-4f8f-9019-d5d21e4fe36a",
+              "@type": "WorkflowRoute",
+              "name": "Start-> Export FortiSOAR Template",
+              "targetStep": "/api/3/workflow_steps/da93f4db-e837-4599-8898-1ce7137ffa78",
+              "sourceStep": "/api/3/workflow_steps/4e1dbb20-60c4-4c0c-8366-6396e8eab4b5",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "9cb442ad-1efc-48e9-b6cb-b17cd1c3e348"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "b5aa9c91-103d-4a31-8b8c-08532fcbab65",
+          "id": 1092,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "cicd-utils"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Import FortiSOAR Template",
+          "aliasName": null,
+          "tag": "#CICD Utils",
+          "description": "Imports FortiSOAR™ Template zip file in FortiSOAR™.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/28b480da-5465-4f0f-bcb4-f59fb4753e3c",
+          "steps": [
+            {
               "@type": "WorkflowStep",
               "name": "Import FortiSOAR Template",
               "description": null,
-              "status": null,
               "arguments": {
                 "name": "CICD Utils",
                 "config": "''",
@@ -364,42 +325,239 @@
                   "filename": "",
                   "file_path": ""
                 },
-                "version": "1.1.0",
+                "version": "1.2.0",
                 "connector": "cicd-utils",
                 "operation": "import_fortisoar_template",
                 "operationTitle": "Import FortiSOAR Template"
               },
-              "left": "188",
+              "status": null,
               "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "81612d99-8312-4f8f-9019-d5d21e4fe36a"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "28b480da-5465-4f0f-bcb4-f59fb4753e3c"
             }
           ],
-          "triggerLimit": null,
-          "description": "Imports FortiSOAR™ Template zip file in FortiSOAR™.",
-          "name": "Import FortiSOAR Template",
-          "tag": "#CICD Utils",
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Import FortiSOAR Template",
+              "targetStep": "/api/3/workflow_steps/81612d99-8312-4f8f-9019-d5d21e4fe36a",
+              "sourceStep": "/api/3/workflow_steps/28b480da-5465-4f0f-bcb4-f59fb4753e3c",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "f123711c-aaf2-499f-ad66-4e324dcd7f81"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "d3855e79-c0ed-4f09-ba27-5d04dc303105",
+          "id": 1093,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "cicd-utils"
-          ],
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Unzip Export Template",
+          "aliasName": null,
+          "tag": "#CICD Utils",
+          "description": "Unzip the specified export template zip file",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/28b480da-5465-4f0f-bcb4-f59fb4753e3c",
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/630e09a7-b8b5-4dfe-bb69-f89b58f10a30",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "630e09a7-b8b5-4dfe-bb69-f89b58f10a30"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Unzip Export Template",
+              "description": null,
+              "arguments": {
+                "name": "CICD Utils",
+                "config": "''",
+                "params": {
+                  "filepath": ""
+                },
+                "version": "1.2.0",
+                "connector": "cicd-utils",
+                "operation": "unzip_export_template",
+                "operationTitle": "Unzip Export Template"
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "f08196a7-a32e-4733-9662-292c7e4451b9"
+            }
+          ],
           "routes": [
             {
-              "uuid": "f123711c-aaf2-499f-ad66-4e324dcd7f81",
               "@type": "WorkflowRoute",
+              "name": "Start-> Unzip Export Template",
+              "targetStep": "/api/3/workflow_steps/f08196a7-a32e-4733-9662-292c7e4451b9",
+              "sourceStep": "/api/3/workflow_steps/630e09a7-b8b5-4dfe-bb69-f89b58f10a30",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Import FortiSOAR Template",
-              "sourceStep": "/api/3/workflow_steps/28b480da-5465-4f0f-bcb4-f59fb4753e3c",
-              "targetStep": "/api/3/workflow_steps/81612d99-8312-4f8f-9019-d5d21e4fe36a"
+              "group": null,
+              "uuid": "f515ea21-9e20-496f-b04a-b253ef86b129"
             }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "fa078ac4-d712-4a5c-b7e7-c8d9467f1132",
+          "id": 1090,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "cicd-utils"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Review & Import FortiSOAR Template",
+          "aliasName": null,
+          "tag": "#CICD Utils",
+          "description": "Review and import FortiSOAR™ Job Template in FortiSOAR™.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1756136841,
+          "collection": "/api/3/workflow_collections/a06931ae-9ff6-48f8-aa1c-ba37a69c45da",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/8bd7237b-e36a-48b0-beec-17b49732aa4f",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Review and Import FortiSOAR Template",
+              "description": null,
+              "arguments": {
+                "name": "CICD Utils",
+                "config": "8ce6b138-aed4-4b75-b3d7-eab72c959e54",
+                "params": {
+                  "filename": "",
+                  "file_path": ""
+                },
+                "version": "1.2.0",
+                "connector": "cicd-utils",
+                "operation": "review_import_fortisoar_template",
+                "operationTitle": "Review & Import FortiSOAR Template",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "1c38293c-0ec4-471c-8894-56044461b5ba"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "8bd7237b-e36a-48b0-beec-17b49732aa4f"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Import FortiSOAR Template",
+              "targetStep": "/api/3/workflow_steps/1c38293c-0ec4-471c-8894-56044461b5ba",
+              "sourceStep": "/api/3/workflow_steps/8bd7237b-e36a-48b0-beec-17b49732aa4f",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "7b4e55c6-3542-4d92-af14-0f234f6ca999"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "fd541890-1ff4-41e0-8b96-eb15a57b5327",
+          "id": 1644,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "cicd-utils"
           ]
         }
       ]
     }
+  ],
+  "exported_tags": [
+    "cicd-utils"
   ]
 }
