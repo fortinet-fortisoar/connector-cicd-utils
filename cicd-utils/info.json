@@ -1,6 +1,6 @@
 {
   "name": "cicd-utils",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "label": "CICD Utils",
   "description": "CICD Utils provides out of the box actions for CICD solution pack",
   "publisher": "Fortinet",
@@ -9,7 +9,7 @@
   "icon_small_name": "default_small.png",
   "icon_large_name": "default_large.png",
   "category": "Utilities",
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.1.0/cicd-utils/809/cicd-utils-v1-1-0",
+  "help_online": "",
   "configuration": {},
   "operations": [
     {
@@ -287,6 +287,35 @@
           "description": "Specify the path of the FortiSOAR™ Template file to be imported. e.g. /tmp/github-fortisoar-prod-content-2024-01-10-12-16-24-315685.zip",
           "tooltip": "Specify the path of the FortiSOAR™ Template file to be imported.",
           "placeholder": "e.g. /tmp/github-fortisoar-prod-content-2024-01-10-12-16-24-315685.zip"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "title": "Review & Import FortiSOAR Template",
+      "operation": "review_import_fortisoar_template",
+      "annotation": "review_import_fortisoar_template",
+      "category": "utilities",
+      "description": "Review and import FortiSOAR Job Template in FortiSOAR.",
+      "output_schema": {},
+      "parameters": [
+        {
+          "title": "File Name",
+          "type": "text",
+          "name": "filename",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the path of the FortiSOAR Template file to be imported."
+        },
+        {
+          "title": "File Path",
+          "type": "text",
+          "name": "file_path",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the path of the FortiSOAR Job Template to be imported."
         }
       ],
       "enabled": true
