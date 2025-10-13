@@ -1,3 +1,2 @@
 #### What's Improved
-- Added following new actions: 
-  - Review & Import FortiSOAR Template
+•	Added a new action Review & Import FortiSOAR Template
